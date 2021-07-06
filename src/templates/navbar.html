@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">NBA For Dummies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'search_player' %}">Discover</a>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'simulate' %}">Game Simulator</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'query1' %}">Complex 1</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Top 5 Best/Worst
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'attack' %}">Offense</a>
+          <a class="dropdown-item" href="{% url 'defense' %}">Defense</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

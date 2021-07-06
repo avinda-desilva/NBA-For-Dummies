@@ -1,0 +1,43 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+<h1> Update Player </h1>
+<style>
+body {font-family: "Lato", sans-serif;}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    background-color: #f44336;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 22%;
+}
+
+a.button1 {background-color: #4CAF50;}
+a.button2 {background-color: #008CBA;} /* Blue */
+a.button3 {background-color: #e7e7e7; color: black;} /* Gray */
+#London {background-color:red;}
+#Paris {background-color:green;}
+#Tokyo {background-color:blue;}
+#Oslo {background-color:orange;}
+</style>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <input type="submit" value="UPDATE" class= "btn btn-lg btn-info" name="YEEET"></input>
+</form>
+
+
+{% endblock %}

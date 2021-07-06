@@ -1,0 +1,114 @@
+<!-- templates/home.html -->
+<!-- templates/home.html -->
+{%  extends 'main.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: "Lato", sans-serif;}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    background-color: #f44336;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 22%;
+}
+
+a.button1 {background-color: #4CAF50;}
+a.button2 {background-color: #008CBA;} /* Blue */
+a.button3 {background-color: #e7e7e7; color: black;} /* Gray */
+#London {background-color:red;}
+#Paris {background-color:green;}
+#Tokyo {background-color:blue;}
+#Oslo {background-color:orange;}
+</style>
+</head>
+<body>
+{%  include 'navbar.html' %}
+
+<h1>Welcome to the NBA for Dummies! Please select an option from below:</h1>
+<a href="homesearchplayer" class="button">Search Player</a>
+<a href="homeinsertplayer" class="button button1">Insert Player</a>
+<a href="homeupdateplayer" class="button button2">Update Player</a>
+<a href="{% url 'simulate' %}" class="button button3">Game Simulator</a>
+
+<article>
+<ul>
+
+    <td>NAME</td>
+    <td>SEASON</td>
+    <td>POINTS</td>
+
+  {% for player in players %}
+    <li>
+      <td>{{player.player_name}}</td>
+      <td>{{player.season_id}}</td>
+      <td>{{player.team_name}}</td>
+      <td>{{player.points}}</td>
+      <td><a class="button button1" href="{% url 'delete_form1' player.id %}">Delete</a></td>
+
+    </li>
+  {% endfor %}
+</ul>
+</article>
+
+<article>
+<ul>
+
+    <td>NAME</td>
+    <td>SEASON</td>
+    <td>POINTS</td>
+
+  {% for player in opponents %}
+    <li>
+      <td>{{player.player_name}}</td>
+      <td>{{player.season_id}}</td>
+      <td>{{player.team_name}}</td>
+      <td>{{player.points}}</td>
+      <td><a class="button button2" href="{% url 'delete_form2' player.id %}">Delete</a></td>
+
+    </li>
+  {% endfor %}
+</ul>
+</article>
+</body>
+
+{% endblock %}

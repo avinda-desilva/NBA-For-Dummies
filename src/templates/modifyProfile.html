@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{#{% block page_script %}#}
+{#    {% if messages %}#}
+{#            {% for message in messages %}#}
+{#                alert(message);#}
+{#            {% endfor %}#}
+{#    {% endif %}#}
+{#{% endblock %}#}
+
+{% block page_title %}
+    Modify your profile
+{% endblock %}
+
+
+{% block page_head %}
+    Modify your profile
+{% endblock %}
+
+
+{% block content %}
+    <p>{{ msg }}</p>
+    <form method="post" action="#">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Confirm</button>
+    </form>
+
+{%  endblock %}

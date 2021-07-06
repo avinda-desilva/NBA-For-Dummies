@@ -1,0 +1,73 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+<div class="bg-info text-white jumbotron">
+  <h1 class="display-4 text-center"><b>NBA For Dummies</b></h1>
+  <p class="p-10 bg-info lead text-center text-white">View all your favorite players and see matchups that you never knew were possible...</p>
+  <hr class="my-4">
+</div>
+
+<br>
+
+<div class="row text-center justify-content-md-center">
+	<div class="col-md-6">
+		<h1><b>Team 1</b></h1>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block btn-warning font-weight-bold" href="{% url 'delete_all1' %}">Remove All Players</a>
+			<table class="table table-sm">
+				<tr>
+          <td><b>View</b></td>
+          <td><b>Remove</b></td>
+          <td><b>Update</b></td>
+          <td><b>Name</b></td>
+          <td><b>Season</b></td>
+          <td><b>Team</b></td>
+				</tr>
+
+				{% for player in players %}
+					<tr>
+						<td><a class="btn btn-sm btn-primary" href="{% url 'stats_page_user1' player.player_id player.id %}">View Stats</a></td>
+            <td><a class="bg-danger btn btn-sm btn-danger" href="{% url 'delete_form1' player.id %}">Remove Player</a></td>
+            <td><a class="text-white bg-success btn btn-sm " href="{% url 'update_form1' player.id %}">Update Player</a></td>
+						<td>{{player.player_name}}</td>
+            <td>{{player.season_id}}</td>
+            <td>{{player.team_name}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+  	<div class="col-md-6">
+  		<h1><b>Team 2</b></h1>
+  		<div class="card card-body">
+        <a class="btn btn-primary  btn-sm btn-block btn-warning font-weight-bold" href="{% url 'delete_all2' %}">Remove All Players</a>
+  			<table class="table table-sm">
+  				<tr>
+  					<td><b>View</b></td>
+            <td><b>Remove</b></td>
+            <td><b>Update</b></td>
+  					<td><b>Name</b></td>
+  					<td><b>Season</b></td>
+            <td><b>Team</b></td>
+  				</tr>
+
+  				{% for player in opponents %}
+  					<tr>
+              <td><a class="btn btn-sm btn-primary" href="{% url 'stats_page_user2' player.player_id player.id %}">View Stats</a></td>
+  						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_form2' player.id %}">Remove Player</a></td>
+              <td><a class="text-white bg-success btn btn-sm " href="{% url 'update_form2' player.id %}">Update Player</a></td>
+  						<td>{{player.player_name}}</td>
+              <td>{{player.season_id}}</td>
+              <td>{{player.team_name}}</td>
+  					</tr>
+  				{% endfor %}
+
+  			</table>
+  		</div>
+  	</div>
+
+</div>
+
+{% endblock %}

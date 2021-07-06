@@ -1,0 +1,60 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+<h1>Game Simulator:</h1>
+
+<div class="bg-info text-white jumbotron">
+  <h3 class="display-4 text-center"><b>{{team1}}</b></h3>
+  <h3 class="display-4 text-center"><b>{{team2}}</b></h3>
+  <h3 class="display-4 text-center"><b>{{tie}}</b></h3>
+</div>
+
+<div class="row text-center justify-content-md-center">
+	<div class="col-md-6">
+		<h1><b>Team 1</b></h1>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+          <td><b>Name</b></td>
+          <td><b>Season</b></td>
+          <td><b>Team</b></td>
+				</tr>
+
+				{% for player in players %}
+					<tr>
+						<td>{{player.player_name}}</td>
+            <td>{{player.season_id}}</td>
+            <td>{{player.team_name}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+  	<div class="col-md-6">
+  		<h1><b>Team 2</b></h1>
+  		<div class="card card-body">
+  			<table class="table table-sm">
+  				<tr>
+  					<td><b>Name</b></td>
+  					<td><b>Season</b></td>
+            <td><b>Team</b></td>
+  				</tr>
+
+  				{% for player in opponents %}
+  					<tr>
+  						<td>{{player.player_name}}</td>
+              <td>{{player.season_id}}</td>
+              <td>{{player.team_name}}</td>
+  					</tr>
+  				{% endfor %}
+
+  			</table>
+  		</div>
+  	</div>
+
+</div>
+
+{% endblock %}

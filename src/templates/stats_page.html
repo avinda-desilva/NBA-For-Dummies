@@ -1,0 +1,102 @@
+<!-- templates/search_results.html -->
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+  .blocks .btn-primary
+  {
+      padding: 24px 12px;
+      margin: 0 5px;
+      border-radius: 0;
+  }
+
+  .p-3 {
+  padding: $spacer !important;
+  }
+</style>
+
+
+<br>
+<div class="row text-center justify-content-md-center">
+	<div class="col-md-12">
+    <br>
+		<h1><b>Stats Of {{player_name.player_name}} During {{player_name.season_id}}</b></h1>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Age</th>
+          <th>Games Played</th>
+					<th>Games Started</th>
+					<th>Minutes Played</th>
+          <th>Field Goals Made</th>
+          <th>Field Goal Attempts</th>
+          <th>Field Goal Percentage</th>
+          <th>3-Point Field Goals Made</th>
+          <th>3-Point Field Goal Attempts</th>
+					<th>3-Point Field Goal Percentage</th>
+				</tr>
+        {% for players in object_list %}
+          <tr>
+            <td>{{players.age}}</td>
+            <td>{{players.gp}}</td>
+            <td>{{players.gs}}</td>
+            <td>{{players.min}}</td>
+            <td>{{players.fgm}}</td>
+            <td>{{players.fga}}</td>
+            <td>{{players.fg_pct}}</td>
+            <td>{{players.fg3m}}</td>
+            <td>{{players.fg3a}}</td>
+            <td>{{players.fg3_pct}}</td>
+          </tr>
+        {% endfor %}
+
+			</table>
+      <table class="table table-sm">
+        <tr>
+          <th>Free Throws Made</th>
+          <th>Free Throw Attempts</th>
+          <th>Free Throw Percentage</th>
+          <th>Offensive Rebounds</th>
+          <th>Defensive Rebounds</th>
+          <th>Rebounds</th>
+          <th>Assists</th>
+          <th>Steals</th>
+          <th>Blocks</th>
+          <th>Turnovers</th>
+          <th>Personal Fouls</th>
+          <th>Points</th>
+        </tr>
+        {% for players in object_list %}
+          <tr>
+            <td>{{players.ftm}}</td>
+            <td>{{players.fta}}</td>
+            <td>{{players.ft_pct}}</td>
+            <td>{{players.oreb}}</td>
+            <td>{{players.dreb}}</td>
+            <td>{{players.reb}}</td>
+            <td>{{players.ast}}</td>
+            <td>{{players.stl}}</td>
+            <td>{{players.blk}}</td>
+            <td>{{players.tov}}</td>
+            <td>{{players.pf}}</td>
+            <td>{{players.pts}}</td>
+          </tr>
+        {% endfor %}
+
+      </table>
+      <div class="col-md-12">
+        <div class="btn-group w-75 px-2">
+          <a class="btn btn-sm btn-primary p-2 text-large" href="{% url 'add_player' player_name.player_id player_name.team_id player_name.season_id %}">Add To Team 1</a>
+          <a class="btn btn-sm btn-success p-2 text-large" href="{% url 'add_player2' player_name.player_id player_name.team_id player_name.season_id %}">Add To Team 2</a>
+        </div>
+      </div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+{% endblock %}

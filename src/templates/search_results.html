@@ -1,0 +1,104 @@
+<!-- templates/search_results.html -->
+{%  extends 'main.html' %}
+
+{% block content %}
+
+
+<style>
+body {font-family: "Lato", sans-serif;}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    background-color: #f44336;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 22%;
+}
+
+a.button1 {background-color: #4CAF50;}
+a.button2 {background-color: #008CBA;} /* Blue */
+a.button3 {background-color: #e7e7e7; color: black;} /* Gray */
+#London {background-color:red;}
+#Paris {background-color:green;}
+#Tokyo {background-color:blue;}
+#Oslo {background-color:orange;}
+</style>
+
+<!-- <h1>Search Results</h1> -->
+
+
+
+<!-- <ul>
+
+    <td>NAME</td>
+    <td>SEASON</td>
+    <td>POINTS</td>
+
+  {% for players in object_list %}
+    <li>
+      <td>{{players.player_name}}</td>
+      <td>{{players.season_id}}</td>
+      <td>{{players.team_name}}</td>
+      <td>{{players.points}}</td>
+      <td><a class="btn btn-sm btn-info" href="{% url 'stats_page' players.player_id players.team_id players.season_id %}">View</a></td>
+
+      <td><a class="btn btn-sm btn-info" href="{% url 'update_form' players.player_id players.team_id players.season_id %}">Update Stats</a></td>
+
+      <td><a class="btn btn-sm btn-info" href="{% url 'teammates' players.player_id players.season_id players.team_id %}">View Teammates</a></td>
+    </li>
+  {% endfor %}
+</ul> -->
+<br>
+<div class="row text-center justify-content-md-center">
+  <form action="{%  url 'search_results' %}" method="get" class="search">
+    <div class="input-group input-group-lg">
+      <input type="text" name="q" class="form-control" placeholder="Search Again" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-dark" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+	<div class="col-md-10">
+    <br>
+		<h1><b>Results</b></h1>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<td><b>Name</b></td>
+          <td><b>Team</b></td>
+					<td><b>Season</b></td>
+          <td><b>View Stats</b></td>
+          <td><b>View Team</b></td>
+          <td><b>Similar Players</b></td>
+				</tr>
+
+				{% for players in object_list %}
+					<tr>
+						<td>{{players.player_name}}</td>
+            <td>{{players.team_name}}</td>
+            <td>{{players.season_id}}</td>
+            <td><a class="btn btn-sm btn-primary" href="{% url 'stats_page' players.player_id players.team_id players.season_id %}">View</a></td>
+
+            <td><a class="btn btn-sm btn-primary" href="{% url 'teammates' players.player_id players.season_id players.team_id %}">View Teammates</a></td>
+
+            <td><a class="btn btn-sm btn-primary" href="{% url 'viewLevel' players.points players.season_id %}">Similar To</a></td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+<!-- <a href="{% url 'home' %}" class="button">Back</a> -->
+
+{% endblock %}

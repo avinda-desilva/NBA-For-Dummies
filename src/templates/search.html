@@ -1,0 +1,20 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+<br>
+<link rel="stylesheet" href="/search.css">
+<div class="row text-center justify-content-md-center">
+  <h1>Find Players (1946-2020)</h1>
+</div>
+<br>
+<div class="row text-center justify-content-md-center">
+  <form action="{%  url 'search_results' %}" method="get" class="search">
+    <div class=" input-group input-group-lg">
+      <input type="text" name="q" class="form-control" placeholder="Enter Player Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-dark" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
